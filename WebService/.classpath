@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-9">
+		<attributes>
+			<attribute name="module" value="true"/>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/wjr/eclipse-workspace/jlib/javalib/javalib/json-20160807.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wjr/eclipse-workspace/jlib/javalib/javalib/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wjr/eclipse-workspace/jlib/javalib/javalib/lucene-analyzers-common-4.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wjr/eclipse-workspace/jlib/javalib/javalib/lucene-core-4.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wjr/eclipse-workspace/jlib/javalib/javalib/lucene-queryparser-4.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wjr/eclipse-workspace/jlib/javalib/javalib/lucene-suggest-4.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wjr/eclipse-workspace/jlib/javalib/javalib/mysql-connector-java-5.1.40-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wjr/eclipse-workspace/jlib/javalib/javalib/servlet-api-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/wjr/eclipse-workspace/jlib/javalib/javalib/spymemcached-2.12.1.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+<display-name>SearchAds</display-name>
+<!-- 下面的这个index.html就是当这个service启动以后，显示出的home page是什么 -->
+<!-- 这里做的比较丑，但是实际上原理是这样的；这些显示出来给别人看的web都放在了那个WebContent里了 -->
+<!-- 那么这里显示的内容，就是那些个广告 -->
+<welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+</welcome-file-list>
+
+
+<!-- 下面就是一些config file里面的parameter -->
+<!-- 这些parameter究竟是干嘛的？实际上就是把param-vale所指向的文件，赋给param-name -->
+<!-- 然后如果在Servlet类也就是SearchAdsServer里面对param-name进行调用的话，就会自动根据这个config file里面指示的 -->
+<!-- 也就是param-name对应的param-value，去找对应的文件，从而获得需要的值 -->
+<!-- 具体就比如，如果SearchAdsServer类里面想要获取广告数据文件，那就会调用adsDataFilePath这个参数 -->
+<!-- 而这个参数，由于SearchAdsServer类已经init了这个config file，所以在调用的时候就会自动跑到这个config file里面 -->
+<!-- 在这个config file里面去找对应adsDataFilePath这个参数对应的路径，从而获取到值 -->
+<context-param>
+<param-name>adsDataFilePath</param-name>
+<param-value>/Users/wjr/eclipse-workspace/SearchAdsdata/ads7.txt</param-value>
+</context-param>
+
+<context-param>
+<param-name>budgetDataFilePath</param-name>
+<param-value>/Users/wjr/eclipse-workspace/SearchAdsdata/budget.txt</param-value>
+</context-param>
+
+<!-- 下面这两个就是mechine learning的model的weight等数据 -->
+<context-param>
+<param-name>ctrLogisticRegressionDataFilePath</param-name>
+<param-value>/Users/wjr/eclipse-workspace/SearchAdsmodel/ctrLogisticRegression.txt</param-value>
+</context-param>
+
+<context-param>
+<param-name>ctrGBDTDataFilePath</param-name>
+<param-value>/Users/wjr/eclipse-workspace/SearchAdsmodel/</param-value>
+</context-param>
+
+<!-- 下面的两个是html文件，就是web server根据响应可能会打开的文件 -->
+<context-param>
+<param-name>uiTemplateFilePath</param-name>
+<param-value>/Users/wjr/eclipse-workspace/SearchAdswebpage/ui.html</param-value>
+</context-param>
+
+<context-param>
+<param-name>adTemplateFilePath</param-name>
+<param-value>/Users/wjr/eclipse-workspace/SearchAdswebpage/item.html</param-value>
+</context-param>
+
+<!-- memcachedServer相关的 -->
+<context-param>
+<param-name>memcachedServer</param-name>
+<param-value>127.0.0.1</param-value>
+</context-param>
+
+<context-param>
+<param-name>memcachedPortal</param-name>
+<param-value>11211</param-value>
+</context-param>
+
+<context-param>
+<param-name>featureMemcachedPortal</param-name>
+<param-value>11218</param-value>
+</context-param>
+
+<!-- mysql相关的 -->
+<context-param>
+<param-name>mysqlHost</param-name>
+<param-value>127.0.0.1:3306</param-value>
+</context-param>
+
+<context-param>
+<param-name>mysqlDB</param-name>
+<param-value>searchads</param-value>
+</context-param>
+
+<context-param>
+<param-name>mysqlUser</param-name>
+<param-value>root</param-value>
+</context-param>
+
+<context-param>
+<param-name>mysqlPass</param-name>
+<param-value>123456</param-value>
+</context-param>
+
+<!-- 这些servlet是干嘛的？是再deploy这个project的时候用的 -->
+<!-- 首先置顶servlet的名字和class，就是创建的那个Servlet类的时候设置的那些 -->
+<servlet>
+    <servlet-name>SearchAds</servlet-name>
+    <servlet-class>io.bittiger.ads.SearchAdsServer</servlet-class>
+</servlet>
+
+<!-- 然后就是设置一下mapping，就是说send request到request path的时候，Server要知道应该调用哪一个Servlet -->
+<!-- 这个就是从Servlet mapping知道的 -->
+<servlet-mapping>
+    <servlet-name>SearchAds</servlet-name>
+    <url-pattern>/SearchAds</url-pattern>
+</servlet-mapping>
+
+</web-app>
